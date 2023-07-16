@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Day In My Life - Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Thumbnail for Social Media Sharing -->
+    <meta property="og:image" content="thumbnail.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:description" content="Share your daily adventures with A Day In My Life anonymously">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">A Day In My Life</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#Home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Notes">Notes</a>
+                    </li>
+                </ul>                
+            </div>
+        </div>
+    </nav>
+
+    <section id="Home">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100 carousel-image" src="assets/Lakeside_2019_Teal_NoDeer_UHD2.png"
+                        alt="First slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>A Day In My Life</h5>
+                        <p>Begins with the vibrant colors of the sunrise illuminating my room. I embrace the early morning
+                            calmness as I prepare for the adventures that await me.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100 carousel-image" src="assets/Lakeside_2019_NoDeer_Evening_UHD2.png"
+                        alt="Second slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>A Day In My Life</h5>
+                        <p>As the day progresses, I immerse myself in various activities. Whether it's working on
+                            challenging assignments, participating in extracurricular activities, or exploring new hobbies.
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100 carousel-image" src="assets/lakeside_2019_midnight.png" alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>A Day In My Life</h5>
+                        <p>As midnight approaches, my day as a student draws to a close. However, the night is not only a
+                            time for rest but also for contemplation and personal growth.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Clock and Greetings Overlay -->
+            <div class="overlay">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h2 id="greeting"></h2>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <div id="clock" class="clock">loading ...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </section>
+
+    <section id="Notes" class="container-fluid custom-container mt-4">
+        <div class="row" id="cardRow">
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top"
+                        src="https://i.pinimg.com/564x/55/a6/9c/55a69c648929548c2b961fb5a4368693.jpg" alt="Card 1">
+                    <div class="card-body">
+                        <h5 class="card-title">3 July - 2023</h5>
+                        <p class="card-text">Having fun with homies at Time Zone until the joyeness reach out the
+                            voyager 😎🏀🎮</p>
+                        <a href="#" class="btn btn-primary read-more-btn">Read More</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top"
+                        src="https://i.pinimg.com/564x/94/54/9d/94549d015356c803647604905264afc5.jpg" alt="Card 2">
+                    <div class="card-body">
+                        <h5 class="card-title">4 July - 2023</h5>
+                        <p class="card-text">As the sun slowly disappear trough the horizon, we speed up our rocket with
+                            90's music fuel</p>
+                        <a href="#" class="btn btn-primary read-more-btn">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top"
+                        src="https://i.pinimg.com/564x/77/28/0f/77280faa5c97403d550cd82e19d4b9a3.jpg" alt="Card 3">
+                    <div class="card-body">
+                        <h5 class="card-title">5 July - 2023</h5>
+                        <p class="card-text">Enchanting movie night with "HER", such a must for quality time</p>
+                        <a href="#" class="btn btn-primary read-more-btn">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top"
+                        src="https://i.pinimg.com/564x/5e/ba/c1/5ebac1e2ee93b2710f0ae1de2539e009.jpg" alt="Card 4">
+                    <div class="card-body">
+                        <h5 class="card-title">6 July - 2023</h5>
+                        <p class="card-text">The legend said "remember that god gave you a brain not for free", study
+                            harder!!! 🧠💪💻</p>
+                        <a href="#" class="btn btn-primary read-more-btn">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+    </section>
+
+    <button type="button" class="btn btn-primary btn-add-content" data-toggle="modal" data-target="#addContentModal">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+    </button>
+
+    <!-- Add Content Modal -->
+    <div class="modal fade" id="addContentModal" tabindex="-1" role="dialog" aria-labelledby="addContentModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div style="margin-top: 15px;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="row"
+                    style="padding-left: 20px; padding-right: 20px; text-align: center; justify-content: center;">
+                    <h5 class="modal-title" id="addContentModalLabel">How was your day?</h5>
+                </div>
+                <div class="modal-body">
+                    <form id="newContentForm">
+                        <div class="form-group">
+                            <label for="contentDate">Date : </label>
+                            <input type="date" class="form-control" id="contentDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contentTitle">Your story title : </label>
+                            <input type="text" class="form-control" id="contentTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contentImage">Story cover : </label>
+                            <input type="file" class="form-control-file" id="contentImage" accept="image/*">
+                        </div>
+                        <div class="form-group">
+                            <label for="contentAdditionalNote">Can't wait to hear your story</label>
+                            <textarea class="form-control" id="contentAdditionalNote" rows="3"></textarea>
+                        </div>
+                        <div class="button-body">
+                            <button type="submit" class="btn btn-primary" style="height: 50px;">Add Story</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-storage.js"></script>
+    <script src="script.js"></script>
+</body>
+
+<footer class="footer mt-5">
+    <div class="footer-content">
+        <div class="footer-item">
+            <h6>-- A Day In My Life --</h6>
+        </div>
+        <div class="footer-item">
+            <p>"Share your story anonymously"</p>
+        </div>
+    </div>
+</footer>
+
+
+</html>
