@@ -180,6 +180,8 @@ $(document).ready(function () {
 
     $('#newContentForm').submit(function (event) {
         event.preventDefault();
+        // Close the modal
+        $('#addContentModal').modal('hide');
         showProgressIndicator();
 
         var date = $('#contentDate').val();
@@ -203,54 +205,66 @@ $(document).ready(function () {
                 var storageRef = firebase.storage().ref('images/' + contentDocRef.id);
                 var uploadTask = storageRef.put(file);
 
-                uploadTask.on('state_changed',
+                uploadTask.on(
+                    'state_changed',
                     function (snapshot) {
                         // Track upload progress if needed
                     },
                     function (error) {
                         console.error('Error uploading image:', error);
+                        hideProgressIndicator();
                     },
                     function () {
                         // Upload complete, get the download URL
-                        uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-                            // Store the image URL in Firestore
-                            contentDocRef.update({
-                                imageURL: downloadURL
+                        uploadTask.snapshot.ref
+                            .getDownloadURL()
+                            .then(function (downloadURL) {
+                                // Store the image URL in Firestore
+                                contentDocRef
+                                    .update({
+                                        imageURL: downloadURL
+                                    })
+                                    .then(function () {
+                                        // Create the card and modal elements with the appropriate data and image URL
+                                        var newCard = generateCardHTML({
+                                            date: formattedDate,
+                                            title: title,
+                                            additionalNote: additionalNote,
+                                            imageURL: downloadURL
+                                        });
+
+                                        var modalHTML = generateModalHTML({
+                                            date: formattedDate,
+                                            title: title,
+                                            additionalNote: additionalNote,
+                                            imageURL: downloadURL
+                                        });
+                                        // Append the new card and modal elements to the page
+                                        $('#cardRow').append(newCard);
+                                        $('body').append(modalHTML);
+                                        hideProgressIndicator();
+
+                                        // Reset the form
+                                        $('#newContentForm')[0].reset();
+                                    })
+                                    .catch(function (error) {
+                                        console.error(
+                                            'Error updating document with image URL:',
+                                            error
+                                        );
+                                        hideProgressIndicator();
+                                    });
                             })
-                                .then(function () {
-                                    // Create the card and modal elements with the appropriate data and image URL
-                                    var newCard = generateCardHTML({
-                                        date: formattedDate,
-                                        title: title,
-                                        additionalNote: additionalNote,
-                                        imageURL: downloadURL
-                                    });
-
-                                    var modalHTML = generateModalHTML({
-                                        date: formattedDate,
-                                        title: title,
-                                        additionalNote: additionalNote,
-                                        imageURL: downloadURL
-                                    });
-
-                                    // Append the new card and modal elements to the page
-                                    $('#cardRow').append(newCard);
-                                    $('body').append(modalHTML);
-                                    hideProgressIndicator();
-
-                                    // Reset the form and close the modal
-                                    $('#newContentForm')[0].reset();
-                                    $('#addContentModal').modal('hide');
-                                })
-                                .catch(function (error) {
-                                    console.error('Error updating document with image URL:', error);
-                                });
-                        });
+                            .catch(function (error) {
+                                console.error('Error getting download URL:', error);
+                                hideProgressIndicator();
+                            });
                     }
                 );
             })
             .catch(function (error) {
                 console.error('Error writing document: ', error);
+                hideProgressIndicator();
             });
     });
 });
