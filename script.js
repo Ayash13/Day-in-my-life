@@ -78,6 +78,7 @@ $(document).ready(function () {
     // Function to generate a modal HTML string based on the document data
     function generateModalHTML(doc) {
         var uniqueId = doc.date.replace(/ /g, '-') + '-' + doc.id;
+        var formattedAdditionalNote = doc.additionalNote.replace(/\n/g, '<br>'); // Replace newlines with <br> tags
         var modalHTML = `
     <div class="modal fade" id="contentModal${uniqueId}">
         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -91,12 +92,14 @@ $(document).ready(function () {
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <img class="cardImageModal" src="${doc.imageURL}" class="img-fluid rounded-left" alt="${doc.title}">
+                            <img class="cardImageModal" src="${doc.imageURL}" class="img-fluid rounded-left"
+                                alt="${doc.title}">
                         </div>
                         <div class="col-md-6">
                             <div class="scrollable-text">
                                 <p class="cardText">${doc.title}</p>
-                                <p>${doc.additionalNote}</p>
+                                <p>${formattedAdditionalNote}</p>
+                                <!-- Use the formatted additional note with preserved line breaks -->
                             </div>
                         </div>
                     </div>
@@ -104,9 +107,10 @@ $(document).ready(function () {
             </div>
         </div>
     </div>
-    `;
+        `;
         return modalHTML;
     }
+
 
 
     // Function to display a loader while the data is being fetched
@@ -144,7 +148,9 @@ $(document).ready(function () {
     function fetchDocumentsAndGenerateCards() {
         showLoader();
 
-        db.collection('content').get()
+        db.collection('content')
+            .orderBy('date', 'asc') // Sort the documents by the 'date' field in ascending order
+            .get()
             .then(function (snapshot) {
                 hideLoader();
                 handleFetchedDocuments(snapshot);
@@ -154,6 +160,7 @@ $(document).ready(function () {
                 console.error('Error fetching documents: ', error);
             });
     }
+
 
     // Call the fetchDocumentsAndGenerateCards function when the page loads
     fetchDocumentsAndGenerateCards();
